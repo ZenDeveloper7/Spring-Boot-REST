@@ -19,7 +19,7 @@ public class ServiceClass {
 	public boolean addPerson(Person model) {
 		if (model.getAge() == 0 || model.getId() == 0)
 			return false;
-		else if (model.getName() == null || model.getGender() == null)
+		else if ((model.getName() == null || model.getGender() == null) && (model.getName().isEmpty() || model.getGender().isEmpty()))
 			return false;
 		else {
 			for (Person single : getAllData()) {
