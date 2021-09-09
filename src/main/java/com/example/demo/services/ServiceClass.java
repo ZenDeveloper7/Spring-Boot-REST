@@ -47,17 +47,25 @@ public class ServiceClass {
 
 	public List<Person> getDataByModel(Person model) {
 		List<Person> result = new ArrayList<Person>();
-		for (Person single : getAllData()) {
-			if (single.getId() == model.getId())
-				result.add(single);
-			else if (single.getAge() == model.getAge())
-				result.add(single);
-			else if (single.getName().equalsIgnoreCase(model.getName()))
-				result.add(single);
-			else if (single.getGender().equalsIgnoreCase(model.getGender()))
-				result.add(single);
+		if (model.getAge() == 0 && model.getGender() == null) {
+			for (Person single : getAllData()) {
+				if (single.getId() == model.getId() && single.getName().equalsIgnoreCase(model.getName()))
+					result.add(model);
+			}
+			return result;
+		} else {
+			for (Person single : getAllData()) {
+				if (single.getId() == model.getId())
+					result.add(single);
+				else if (single.getAge() == model.getAge())
+					result.add(single);
+				else if (single.getName().equalsIgnoreCase(model.getName()))
+					result.add(single);
+				else if (single.getGender().equalsIgnoreCase(model.getGender()))
+					result.add(single);
+			}
+			return result;
 		}
-		return result;
 	}
 
 	public Person getPersonByID(int id) {
