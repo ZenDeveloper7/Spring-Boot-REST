@@ -47,10 +47,10 @@ public class ServiceClass {
 
 	public List<Person> getDataByModel(Person model) {
 		List<Person> result = new ArrayList<Person>();
-		if (model.getAge() == 0 && model.getGender() == null) {
+		if (model.getId() != 0 && model.getName() != null) {
 			for (Person single : getAllData()) {
 				if (single.getId() == model.getId() && single.getName().equalsIgnoreCase(model.getName()))
-					result.add(model);
+					result.add(single);
 			}
 			return result;
 		} else {
